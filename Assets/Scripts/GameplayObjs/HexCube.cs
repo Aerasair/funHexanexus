@@ -4,7 +4,7 @@ using DG.Tweening;
 
 public class HexCube : MonoBehaviour
 {
-    [SerializeField] private PosCube _pos1, _pos2, _pos3, _pos4, _pos5, _pos6, _pos7, _pos8;
+    [SerializeField] private PosCube _pos1, _pos2, _pos3, _pos4;
     [SerializeField] private Transform _parent;
     [SerializeField] private Selecter _s1, _s2, _s3, _s4, _s5, _s6, _s7, _s8;
     private AxisList _axis;
@@ -43,22 +43,22 @@ public class HexCube : MonoBehaviour
 
         _pos1 = _s1.GetItem(1);
         _pos2 = _s1.GetItem(2);
-        _pos5 = _s2.GetItem(1);
-        _pos6 = _s2.GetItem(2);
+        _pos3 = _s2.GetItem(1);
+        _pos4 = _s2.GetItem(2);
 
-        SetSelectCubes(_pos1, _pos2, _pos5, _pos6);
+        SetSelectCubes();
         _axis = AxisList.Y;
     }
 
     public void SelectBot()
     {
         UnParent();
-        _pos3 = _s3.GetItem(1);
-        _pos4 = _s3.GetItem(2);
-        _pos7 = _s4.GetItem(1);
-        _pos8 = _s4.GetItem(2);
+        _pos1 = _s3.GetItem(1);
+        _pos2 = _s3.GetItem(2);
+        _pos3 = _s4.GetItem(1);
+        _pos4 = _s4.GetItem(2);
 
-        SetSelectCubes(_pos3, _pos4, _pos7, _pos8);
+        SetSelectCubes();
         _axis = AxisList.Y;
     }
 
@@ -70,18 +70,18 @@ public class HexCube : MonoBehaviour
         _pos3 = _s3.GetItem(1);
         _pos4 = _s3.GetItem(2);
 
-        SetSelectCubes(_pos1, _pos2, _pos3, _pos4);
+        SetSelectCubes();
         _axis = AxisList.Z;
     }
 
     public void SelectLeftRight()
     {
         UnParent();
-        _pos5 = _s2.GetItem(1);
-        _pos6 = _s2.GetItem(2);
-        _pos7 = _s4.GetItem(1);
-        _pos8 = _s4.GetItem(2);
-        SetSelectCubes(_pos5, _pos6, _pos7, _pos8);
+        _pos1 = _s2.GetItem(1);
+        _pos2 = _s2.GetItem(2);
+        _pos3 = _s4.GetItem(1);
+        _pos4 = _s4.GetItem(2);
+        SetSelectCubes();
         _axis = AxisList.Z;
     }
 
@@ -90,10 +90,10 @@ public class HexCube : MonoBehaviour
     {
         UnParent();
         _pos1 = _s5.GetItem(1);
-        _pos3 = _s5.GetItem(2);
-        _pos5 = _s7.GetItem(1);
-        _pos7 = _s7.GetItem(2);
-        SetSelectCubes(_pos1, _pos3, _pos5, _pos7);
+        _pos2 = _s5.GetItem(2);
+        _pos3 = _s7.GetItem(1);
+        _pos4 = _s7.GetItem(2);
+        SetSelectCubes();
         _axis = AxisList.X;
     }
 
@@ -104,16 +104,17 @@ public class HexCube : MonoBehaviour
         _pos2 = _s6.GetItem(2);
         _pos3 = _s8.GetItem(1);
         _pos4 = _s8.GetItem(2);
-        SetSelectCubes(_pos2, _pos4, _pos6, _pos8);
+        SetSelectCubes();
         _axis = AxisList.X;
     }
 
-    private void SetSelectCubes(PosCube cube1, PosCube cube2, PosCube cube3, PosCube cube4)
+    private void SetSelectCubes()
     {
-        cube1.transform.SetParent(_parent);
-        cube2.transform.SetParent(_parent);
-        cube3.transform.SetParent(_parent);
-        cube4.transform.SetParent(_parent);
+        ClearAxis();
+        _pos1.transform.SetParent(_parent);
+        _pos2.transform.SetParent(_parent);
+        _pos3.transform.SetParent(_parent);
+        _pos4.transform.SetParent(_parent);
     }
 
     private void UnParent()
@@ -122,10 +123,11 @@ public class HexCube : MonoBehaviour
         _pos2.transform.SetParent(transform);
         _pos3.transform.SetParent(transform);
         _pos4.transform.SetParent(transform);
-        _pos5.transform.SetParent(transform);
-        _pos6.transform.SetParent(transform);
-        _pos7.transform.SetParent(transform);
-        _pos8.transform.SetParent(transform);
+    }
+
+    private void ClearAxis()
+    {
+        _parent.transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
 }
