@@ -118,22 +118,31 @@ public class HexCube : MonoBehaviour
 
     private void SetSelectCubes()
     {
-        ClearAxis();
-        _pos1.transform.SetParent(_parent);
+        ClearPrevState();
+        _pos1.transform.SetParent(_parent); 
         _pos2.transform.SetParent(_parent);
         _pos3.transform.SetParent(_parent);
         _pos4.transform.SetParent(_parent);
+
+        _pos1.SetMatSelected();
+        _pos2.SetMatSelected();
+        _pos3.SetMatSelected();
+        _pos4.SetMatSelected();
     }
 
     private void UnParent()
     {
+        _pos1.SetMatDef();
+        _pos2.SetMatDef();
+        _pos3.SetMatDef();
+        _pos4.SetMatDef();
         _pos1.transform.SetParent(transform);
         _pos2.transform.SetParent(transform);
         _pos3.transform.SetParent(transform);
         _pos4.transform.SetParent(transform);
     }
 
-    private void ClearAxis()
+    private void ClearPrevState()
     {
         _parent.transform.rotation = new Quaternion(0, 0, 0, 0);
     }

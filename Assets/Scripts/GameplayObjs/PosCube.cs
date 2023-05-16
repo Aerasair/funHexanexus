@@ -2,17 +2,24 @@ using UnityEngine;
 
 public class PosCube : MonoBehaviour
 {
-   [SerializeField]  private Cube _cube;
+    [SerializeField] private Material _matDef;
+    [SerializeField] private Material _selectedMat;
 
-    public Cube Cube => _cube;
+    private Renderer _render;
 
-    public void SetCube(Cube cube)
+    public void Start()
     {
-        gameObject.transform.SetParent(cube.transform);
+        _render = GetComponent<Renderer>();
     }
 
-    //public void RemoveCube()
-    //{
-        
-    //}
+    public void SetMatDef()
+    {
+         _render.sharedMaterial = _matDef;
+    }
+        public void SetMatSelected()
+    {
+         _render.sharedMaterial = _selectedMat;
+    }
+
+
 }
