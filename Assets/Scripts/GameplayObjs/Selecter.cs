@@ -17,6 +17,32 @@ public class Selecter : MonoBehaviour
         return hits[numItem - 1].transform.GetComponent<PosCube>();
     }
 
+    private bool _result;
+    public bool CheckWin(bool isWinTile)
+    {
+        _result = true;
+        layerMask = LayerMask.GetMask("winCube");
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, _hitVector, 100.0F, layerMask);
+        foreach(var item in hits)
+        {
+            if (item.transform.gameObject.GetComponent<Cube>())
+            {
+                if (isWinTile) { return _result = true;  }
+                else { _result = false; continue;   }
+            }
+            else
+            {
+                if (isWinTile) { _result = false; continue; }
+                else { return true;  }
+            }
+            
+        }
+
+        return _result;
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

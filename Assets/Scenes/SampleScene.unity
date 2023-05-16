@@ -812,11 +812,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3229755937536144584, guid: e06b2aa91e1d05345a573d623de30131,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a46d3c8baff12bc48b43ea03f714d75a, type: 2}
     - target: {fileID: 3944459703160956099, guid: e06b2aa91e1d05345a573d623de30131,
         type: 3}
       propertyPath: m_Name
       value: TilesSide
       objectReference: {fileID: 0}
+    - target: {fileID: 6227573880285355742, guid: e06b2aa91e1d05345a573d623de30131,
+        type: 3}
+      propertyPath: _hexCube
+      value: 
+      objectReference: {fileID: 766380724}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e06b2aa91e1d05345a573d623de30131, type: 3}
 --- !u!1001 &6945143441859504586

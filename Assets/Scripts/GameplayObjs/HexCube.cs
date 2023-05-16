@@ -1,14 +1,17 @@
 using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class HexCube : MonoBehaviour
 {
-    [SerializeField] private PosCube _pos1, _pos2, _pos3, _pos4;
+   
     [SerializeField] private Transform _parent;
+    [SerializeField] private PosCube _pos1, _pos2, _pos3, _pos4;
     [SerializeField] private Selecter _s1, _s2, _s3, _s4, _s5, _s6, _s7, _s8;
     private AxisList _axis;
 
+    [HideInInspector] public UnityEvent IsRotationFinished;
 
     private void Start()
     {
@@ -21,20 +24,25 @@ public class HexCube : MonoBehaviour
         {
             case (AxisList.X):
                 {
-                    _parent.transform.DORotate(new Vector2(degrees, 0), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetRelative(true);
+                    _parent.transform.DORotate(new Vector2(degrees, 0), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
             case (AxisList.Y):
                 {
-                    _parent.transform.DORotate(new Vector3(0, degrees, 0), 1f).SetEase(Ease.Linear).SetRelative(true);
+                    _parent.transform.DORotate(new Vector3(0, degrees, 0), 1f).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
             case (AxisList.Z):
                 {
-                    _parent.transform.DORotate(new Vector3(0, 0, degrees), 1f).SetEase(Ease.Linear).SetRelative(true);
+                    _parent.transform.DORotate(new Vector3(0, 0, degrees), 1f).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
         }
+    }
+
+    private void DropEvent()
+    {
+        IsRotationFinished?.Invoke();
     }
 
     public void SelectTop()
