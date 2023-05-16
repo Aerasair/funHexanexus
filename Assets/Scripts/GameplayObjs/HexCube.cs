@@ -7,7 +7,7 @@ public class HexCube : MonoBehaviour
 {
    
     [SerializeField] private Transform _parent;
-    [SerializeField] private PosCube _pos1, _pos2, _pos3, _pos4;
+    private PosCube _pos1, _pos2, _pos3, _pos4;
     [SerializeField] private Selecter _s1, _s2, _s3, _s4, _s5, _s6, _s7, _s8;
     [SerializeField] private float _rTime = 0.5f;
     private AxisList _axis;
@@ -133,6 +133,7 @@ public class HexCube : MonoBehaviour
 
     private void UnParent()
     {
+        if (_pos1 == null) return;
         _pos1.SetMatDef();
         _pos2.SetMatDef();
         _pos3.SetMatDef();

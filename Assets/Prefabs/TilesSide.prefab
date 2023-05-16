@@ -68,6 +68,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2050666184753873011}
     m_Modifications:
+    - target: {fileID: 1700638578004331587, guid: a7304e3e0be34154d909b24df3fae784,
+        type: 3}
+      propertyPath: _isWinTile
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3062800294514201542, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
       propertyPath: _hitVector.x
@@ -339,6 +344,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2050666184753873011}
     m_Modifications:
+    - target: {fileID: 1700638578004331587, guid: a7304e3e0be34154d909b24df3fae784,
+        type: 3}
+      propertyPath: _isWinTile
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5550906245243355543, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
       propertyPath: m_RootOrder

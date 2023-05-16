@@ -24,6 +24,7 @@ public class Selecter : MonoBehaviour
         layerMask = LayerMask.GetMask("winCube");
         RaycastHit[] hits;
         hits = Physics.RaycastAll(transform.position, _hitVector, 100.0F, layerMask);
+        if(hits.Length == 0) {  if (isWinTile) _result = false; else _result = true;  }
         foreach(var item in hits)
         {
             if (item.transform.gameObject.GetComponent<Cube>())

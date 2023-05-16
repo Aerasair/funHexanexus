@@ -23,7 +23,7 @@ public class CheckWin : MonoBehaviour
         {
             bool res = _tiles[i].CheckWin();
             _results[i] = res;
-         //  Debug.Log($"{_tiles[i].name} {_tiles[i].CheckWin()}");
+            Debug.Log($"{_tiles[i].name} {_tiles[i].CheckWin()}");
         }
         
         foreach(var item in _results)
