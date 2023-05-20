@@ -7,13 +7,19 @@ public class TileEditor : Editor
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
+        UpdateMat();
+    }
 
+
+    private void UpdateMat()
+    {
         Tile tile = (Tile)target;
-        if(GUILayout.Button("Set Win"))
+        EditorUtility.SetDirty(tile);
+        if (tile.IsWinTile)
         {
             tile.SetWinMat();
-        }  
-        if(GUILayout.Button("Set Ok"))
+        }
+        else
         {
             tile.SetNormalMat();
         }

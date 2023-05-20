@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour
 
     private Renderer _render;
 
+    public bool IsWinTile => _isWinTile;
+
     public void Start()
     {
         _render = GetComponent<Renderer>();

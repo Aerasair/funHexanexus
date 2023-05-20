@@ -33,7 +33,7 @@ public class LeveLoader : MonoBehaviour
             _currentLvl = 0;
         else 
             _currentLvl++;
-        // PlayerPrefs.SetInt(CurLvlPref, _currentLvl);
+        PlayerPrefs.SetInt(CurLvlPref, _currentLvl);
         LoadLevel(_currentLvl);
     }
 
