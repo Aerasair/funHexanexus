@@ -19,7 +19,7 @@ public class Input : MonoBehaviour
 
     public void ResetSc()
     {
-        SceneManager.LoadScene(0);
+        _loader.LoadLevel();
     }
 
     public void LoadNextLvl()

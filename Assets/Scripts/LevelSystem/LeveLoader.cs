@@ -11,19 +11,19 @@ public class LeveLoader : MonoBehaviour
     private Level _loadedLvl;
 
     public Level Level => _loadedLvl;
-    public UnityEvent LvlLoladed;
+    [HideInInspector] public UnityEvent LvlLoladed;
 
     private void Start()
     {
         LoadLevel(PlayerPrefs.GetInt(CurLvlPref, 0));
     }
-    
-    private void LoadLevel(int lvl)
+
+    public void LoadLevel(int lvl = 0)
     {
-        if (_loadedLvl != null) { _loadedLvl.transform.parent = null; Destroy(_loadedLvl.gameObject); _loadedLvl = null; }
+        if (_loadedLvl != null) { _loadedLvl.DestroySelf(); _loadedLvl = null; }
         _loadedLvl = Instantiate(_levels[lvl]);
         _loadedLvl.transform.parent = _point;
-
+        _loadedLvl.transform.localPosition = Vector3.zero;
         LvlLoladed?.Invoke();
     }
 

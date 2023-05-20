@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
 
     private void FindChecker()
     {
-        _loader.LvlLoladed.RemoveListener(FindChecker);
+      //  _loader.LvlLoladed.RemoveListener(FindChecker);
         _checker = FindObjectOfType<CheckWin>();
         _checker.IsWin.AddListener(ShowWinCanvas);
     }

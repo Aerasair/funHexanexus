@@ -2,22 +2,31 @@ using UnityEngine;
 using UnityEditor;
 using DG.Tweening;
 using UnityEngine.Events;
+using System.Collections;
 
 public class HexCube : MonoBehaviour
 {
-   
     [SerializeField] private Transform _parent;
     private PosCube _pos1, _pos2, _pos3, _pos4;
     [SerializeField] private Selecter _s1, _s2, _s3, _s4, _s5, _s6, _s7, _s8;
     [SerializeField] private float _rTime = 0.5f;
     private AxisList _axis;
 
+    private Tween _tween;
+
     [HideInInspector] public UnityEvent IsRotationFinished;
 
     private void Start()
     {
+        StartCoroutine(DelayStart());
+    }
+
+    private IEnumerator DelayStart()
+    {
+        yield return new WaitForSeconds(0.5f);
         SelectTop();
     }
+
 
     public void rotateSelected(int degrees)
     {
@@ -25,17 +34,17 @@ public class HexCube : MonoBehaviour
         {
             case (AxisList.X):
                 {
-                    _parent.transform.DORotate(new Vector2(degrees, 0), _rTime, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
+                    _tween =  _parent.transform.DORotate(new Vector2(degrees, 0), _rTime, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
             case (AxisList.Y):
                 {
-                    _parent.transform.DORotate(new Vector3(0, degrees, 0), _rTime).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
+                    _tween = _parent.transform.DORotate(new Vector3(0, degrees, 0), _rTime).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
             case (AxisList.Z):
                 {
-                    _parent.transform.DORotate(new Vector3(0, 0, degrees), _rTime).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
+                    _tween = _parent.transform.DORotate(new Vector3(0, 0, degrees), _rTime).SetEase(Ease.Linear).SetRelative(true).OnComplete(() => DropEvent());
                     break;
                 }
         }
@@ -43,6 +52,7 @@ public class HexCube : MonoBehaviour
 
     private void DropEvent()
     {
+        _tween?.Kill();
         IsRotationFinished?.Invoke();
     }
 
@@ -147,6 +157,10 @@ public class HexCube : MonoBehaviour
     private void ClearPrevState()
     {
         _parent.transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
+    private void OnDestroy()
+    {
     }
 
 }
