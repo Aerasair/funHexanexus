@@ -1,9 +1,11 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Input : MonoBehaviour
 {
     [SerializeField] private LeveLoader _loader;
+    [SerializeField] private Transform _center;
     private HexCube _hexCube;
 
     private void OnEnable()
@@ -26,6 +28,14 @@ public class Input : MonoBehaviour
     {
         _loader.LoadNextLvl();
     }
+   
+    public void RotateCam()
+    {
+   
+    }
+    
+    
+    
     #endregion
 
     #region Control of cube
