@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 1700638578004331587, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
       propertyPath: _isWinTile
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550906245243355543, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
@@ -536,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 1700638578004331587, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
       propertyPath: _isWinTile
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550906245243355543, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
@@ -628,7 +628,7 @@ PrefabInstance:
     - target: {fileID: 1700638578004331587, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}
       propertyPath: _isWinTile
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3062800294514201542, guid: a7304e3e0be34154d909b24df3fae784,
         type: 3}

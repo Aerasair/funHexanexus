@@ -3,20 +3,63 @@ using UnityEngine.SceneManagement;
 
 public class Input : MonoBehaviour
 {
-    [SerializeField] private HexCube _hexCube;
+    [SerializeField] private LeveLoader _loader;
+    private HexCube _hexCube;
 
-    public void RotateLeft()
+    private void OnEnable()
     {
-        _hexCube.rotateSelected(90);
+        _loader.LvlLoladed.AddListener(FindHexCube);
     }
 
-    public void RotateRight()
+    #region System
+    private void FindHexCube()
     {
-        _hexCube.rotateSelected(-90);
+        _hexCube = _loader.Level.HexCube;
     }
 
     public void ResetSc()
     {
         SceneManager.LoadScene(0);
     }
+
+    public void LoadNextLvl()
+    {
+        _loader.LoadNextLvl();
+    }
+    #endregion
+
+    #region Control of cube
+    public void RotateLeft()
+    {
+        _hexCube.rotateSelected(90);
+    }
+    public void RotateRight()
+    {
+        _hexCube.rotateSelected(-90);
+    }
+    public void SelectTop()
+    {
+        _hexCube.SelectTop();
+    }
+    public void SelectBot()
+    {
+        _hexCube.SelectBot();
+    }
+    public void SelectLeftLeft()
+    {
+        _hexCube.SelectLeftLeft();
+    }
+    public void SelectLeftRight()
+    {
+        _hexCube.SelectLeftRight();
+    }
+    public void SelectRightLeft()
+    {
+        _hexCube.SelectRightLeft();
+    }
+    public void SelectRightRight()
+    {
+        _hexCube.SelectRightRight();
+    }
+    #endregion
 }

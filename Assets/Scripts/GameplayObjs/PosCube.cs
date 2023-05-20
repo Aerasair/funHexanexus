@@ -7,18 +7,18 @@ public class PosCube : MonoBehaviour
 
     private Renderer _render;
 
-    public void Start()
+    public void OnEnable()
     {
         _render = GetComponent<Renderer>();
     }
 
     public void SetMatDef()
     {
-         _render.sharedMaterial = _matDef;
+        _render.sharedMaterial = _matDef;
     }
-        public void SetMatSelected()
+    public void SetMatSelected()
     {
-         _render.sharedMaterial = _selectedMat;
+        _render.sharedMaterial = _selectedMat;
     }
 
 

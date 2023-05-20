@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CheckWin : MonoBehaviour
 {
     [SerializeField] private Tile[] _tiles;
     [SerializeField] private HexCube _hexCube;
     private bool[] _results = new bool[8];
+
+    [HideInInspector] public UnityEvent IsWin;
 
     private void Start()
     {
@@ -23,7 +26,7 @@ public class CheckWin : MonoBehaviour
         {
             bool res = _tiles[i].CheckWin();
             _results[i] = res;
-            Debug.Log($"{_tiles[i].name} {_tiles[i].CheckWin()}");
+            //Debug.Log($"{_tiles[i].name} {_tiles[i].CheckWin()}");
         }
         
         foreach(var item in _results)
@@ -31,7 +34,7 @@ public class CheckWin : MonoBehaviour
             if (item == false) return;
         }
         
-        Debug.Log("Win");
+        IsWin?.Invoke();
     }
    
   
