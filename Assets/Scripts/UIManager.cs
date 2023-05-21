@@ -1,9 +1,12 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject _winCanvas;
+    [SerializeField] private GameObject _gameUI;
+    [SerializeField] private GameObject _menuCanvas;
     [SerializeField] private TextMeshProUGUI _lvlNum;
     [SerializeField] private LeveLoader _loader;
 
@@ -17,7 +20,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateLvlNum();
+       
     }
 
     private void FindChecker()
@@ -25,6 +28,7 @@ public class UIManager : MonoBehaviour
       //  _loader.LvlLoladed.RemoveListener(FindChecker);
         _checker = FindObjectOfType<CheckWin>();
         _checker.IsWin.AddListener(ShowWinCanvas);
+        UpdateLvlNum();
     }
 
 
@@ -40,9 +44,15 @@ public class UIManager : MonoBehaviour
         UpdateLvlNum();
     }
 
+    public void HideMenu()
+    {
+        _menuCanvas.gameObject.SetActive(false);
+        _gameUI.gameObject.SetActive(true);
+    }
+
     private void UpdateLvlNum()
     {
-        _lvlNum.text = "Level: " + (PlayerPrefs.GetInt("CurrentLevel", 0) + 1).ToString();
+        _lvlNum.text = "Level: " + _loader.Level.LvlNuum;
     }
 
 }

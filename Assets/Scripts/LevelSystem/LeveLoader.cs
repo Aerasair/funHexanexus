@@ -22,6 +22,7 @@ public class LeveLoader : MonoBehaviour
 
     private bool TryLoadLevelFromScene()
     {
+        if (_point.transform.childCount == 0) return false;
         Level sceneLvl = _point.GetChild(0).gameObject.GetComponent<Level>();
         if (sceneLvl != null && sceneLvl.gameObject.activeSelf) 
         {
@@ -38,6 +39,7 @@ public class LeveLoader : MonoBehaviour
         _loadedLvl = Instantiate(_levels[lvl]);
         _loadedLvl.transform.parent = _point;
         _loadedLvl.transform.localPosition = Vector3.zero;
+        _currentLvl = lvl;
         LvlLoladed?.Invoke();
     }
 

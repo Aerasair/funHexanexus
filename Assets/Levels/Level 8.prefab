@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hexCube: {fileID: 3692155809940201940}
+  _lvlNum: 8
 --- !u!114 &5723893474843641405
 MonoBehaviour:
   m_ObjectHideFlags: 0
