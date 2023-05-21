@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,7 +16,20 @@ public class LeveLoader : MonoBehaviour
 
     private void Start()
     {
+        if (TryLoadLevelFromScene()) return;
         LoadLevel(PlayerPrefs.GetInt(CurLvlPref, 0));
+    }
+
+    private bool TryLoadLevelFromScene()
+    {
+        Level sceneLvl = _point.GetChild(0).gameObject.GetComponent<Level>();
+        if (sceneLvl != null && sceneLvl.gameObject.activeSelf) 
+        {
+            _loadedLvl = sceneLvl;
+            LvlLoladed?.Invoke();
+            return true; 
+        }
+        return false;
     }
 
     public void LoadLevel(int lvl = 0)
