@@ -43,6 +43,18 @@ public class LeveLoader : MonoBehaviour
         LvlLoladed?.Invoke();
     }
 
+    public void ResetLvl()
+    {
+        RemoveLvl();
+        LoadLevel(_currentLvl);
+    }
+
+    public void RemoveLvl()
+    {
+        _loadedLvl.DestroySelf();
+        _loadedLvl = null;
+    }
+
     public void LoadNextLvl()
     {
         if (_currentLvl == _levels.Length - 1)

@@ -50,6 +50,12 @@ public class UIManager : MonoBehaviour
         _gameUI.gameObject.SetActive(true);
     }
 
+    public void ShowMenu()
+    {
+        _menuCanvas.gameObject.SetActive(true);
+        _loader.RemoveLvl();
+    }
+
     private void UpdateLvlNum()
     {
         _lvlNum.text = "Level: " + _loader.Level.LvlNuum;

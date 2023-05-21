@@ -21,7 +21,7 @@ public class Input : MonoBehaviour
 
     public void ResetSc()
     {
-        _loader.LoadLevel();
+        _loader.ResetLvl();
     }
 
     public void LoadNextLvl()
