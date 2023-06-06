@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -61,7 +60,8 @@ public class LeveLoader : MonoBehaviour
             _currentLvl = 0;
         else 
             _currentLvl++;
-        PlayerPrefs.SetInt(CurLvlPref, _currentLvl);
+
+        if(_currentLvl > PlayerPrefs.GetInt(CurLvlPref, 0)) PlayerPrefs.SetInt(CurLvlPref, _currentLvl);
         LoadLevel(_currentLvl);
     }
 

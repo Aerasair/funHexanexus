@@ -1,4 +1,4 @@
-using System;
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +16,13 @@ public class UIManager : MonoBehaviour
     {
         _loader.LvlLoladed.AddListener(FindChecker);
         _loader.LvlLoladed.AddListener(CloseWinCanvas);
+        //LeanLocalization.OnLocalizationChanged += UpdateLvlNum;
     }
+
+    //private void OnDisable()
+    //{
+    //    LeanLocalization.OnLocalizationChanged -= UpdateLvlNum;
+    //}
 
     private void Start()
     {
@@ -25,7 +31,6 @@ public class UIManager : MonoBehaviour
 
     private void FindChecker()
     {
-      //  _loader.LvlLoladed.RemoveListener(FindChecker);
         _checker = FindObjectOfType<CheckWin>();
         _checker.IsWin.AddListener(ShowWinCanvas);
         UpdateLvlNum();
@@ -58,7 +63,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateLvlNum()
     {
-        _lvlNum.text = "Level: " + _loader.Level.LvlNuum;
+        _lvlNum.text = $"{LeanLocalization.GetTranslationText("level_word")} {_loader.Level.LvlNuum}";
     }
 
 }
