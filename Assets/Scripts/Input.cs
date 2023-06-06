@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class Input : MonoBehaviour
 {
     [SerializeField] private LeveLoader _loader;
-    [SerializeField] private Transform _center;
     private HexCube _hexCube;
 
     private void OnEnable()
