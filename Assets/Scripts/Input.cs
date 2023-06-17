@@ -1,10 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class Input : MonoBehaviour
 {
-    [SerializeField] private LeveLoader _loader;
+    [Inject] private LeveLoader _loader;
     private HexCube _hexCube;
 
     private void OnEnable()

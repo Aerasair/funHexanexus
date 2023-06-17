@@ -57,9 +57,13 @@ public class LeveLoader : MonoBehaviour
     public void LoadNextLvl()
     {
         if (_currentLvl == _levels.Length - 1)
+        {
             _currentLvl = 0;
-        else 
+        }
+        else
+        {
             _currentLvl++;
+        }
 
         if(_currentLvl > PlayerPrefs.GetInt(CurLvlPref, 0)) PlayerPrefs.SetInt(CurLvlPref, _currentLvl);
         LoadLevel(_currentLvl);

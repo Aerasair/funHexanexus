@@ -1,6 +1,7 @@
 using Lean.Localization;
 using TMPro;
 using UnityEngine;
+using Zenject;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameUI;
     [SerializeField] private GameObject _menuCanvas;
     [SerializeField] private TextMeshProUGUI _lvlNum;
-    [SerializeField] private LeveLoader _loader;
+    [Inject] private LeveLoader _loader;
 
     private CheckWin _checker;
 
