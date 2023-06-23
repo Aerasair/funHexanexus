@@ -9,9 +9,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameUI;
     [SerializeField] private GameObject _menuCanvas;
     [SerializeField] private TextMeshProUGUI _lvlNum;
-    [Inject] private LeveLoader _loader;
+    private LeveLoader _loader;
 
     private CheckWin _checker;
+
+    [Inject]
+    private void Construct(LeveLoader loader)
+    {
+        _loader = loader;
+    }
 
     private void OnEnable()
     {

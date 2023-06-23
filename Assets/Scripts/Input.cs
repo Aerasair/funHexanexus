@@ -5,8 +5,14 @@ using Zenject;
 
 public class Input : MonoBehaviour
 {
-    [Inject] private LeveLoader _loader;
+    private LeveLoader _loader;
     private HexCube _hexCube;
+    
+    [Inject]
+    private void Construct(LeveLoader loader)
+    {
+        _loader = loader;
+    }
 
     private void OnEnable()
     {

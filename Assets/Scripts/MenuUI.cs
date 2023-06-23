@@ -7,9 +7,15 @@ public class MenuUI : MonoBehaviour
     [SerializeField] private Button[] _buttons;
     [SerializeField] private Color _completedColor; 
     
-    [Inject] private LeveLoader _loader;
-    [Inject] private UIManager _uiManager;
-	
+    private LeveLoader _loader;
+    private UIManager _uiManager;
+
+    [Inject]
+    private void Construct(LeveLoader loader, UIManager uIManager)
+    {
+        _loader = loader;
+        _uiManager = uIManager;
+    }
     private void OnEnable()
     {
         SetColorBtns();

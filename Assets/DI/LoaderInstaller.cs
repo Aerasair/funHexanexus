@@ -4,10 +4,21 @@ using Zenject;
 public class LoaderInstaller : MonoInstaller
 {
     [SerializeField] private LeveLoader _leveLoader;
+    [SerializeField] private UIManager _uIManager;
 
     public override void InstallBindings()
     {
-        Container.Bind<LeveLoader>().FromInstance(_leveLoader).AsSingle().NonLazy();
-        Container.QueueForInject(_leveLoader);
+        BindLevelLoader();
+        BindUiManager();
+    }
+
+    private void BindUiManager()
+    {
+        Container.Bind<UIManager>().FromInstance(_uIManager).AsSingle();
+    }
+
+    private void BindLevelLoader()
+    {
+        Container.Bind<LeveLoader>().FromInstance(_leveLoader).AsSingle();
     }
 }
